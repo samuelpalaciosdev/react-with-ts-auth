@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import { getFirstProduct } from '../../services';
 import { useProductStore } from '../../store/store';
+import { PrivateRoutes } from '../../types';
 import { GetSingleProduct } from '../../types/product';
 
 const Login = () => {
   const createProduct = useProductStore((state) => state.createProduct);
+  const navigate = useNavigate();
 
   // useProductStore((state) => {
   //   // Initial state
@@ -18,6 +21,7 @@ const Login = () => {
     try {
       const res: GetSingleProduct = await getFirstProduct();
       createProduct(res.product);
+      navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
     } catch (error) {
       console.log(error);
     }
