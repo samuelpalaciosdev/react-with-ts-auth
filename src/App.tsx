@@ -16,7 +16,7 @@ function App() {
         <BrowserRouter>
           <Logout />
           <RoutesWithNotFound>
-            <Route path='/' element={<Navigate to={PrivateRoutes.DASHBOARD} />} />
+            <Route path='/' element={<Navigate to={PrivateRoutes.PRIVATE} />} />
             <Route path={PublicRoutes.LOGIN} element={<Login />} />
             <Route element={<AuthGuard />}>
               <Route path={`${PrivateRoutes.PRIVATE}/*`} element={<Private />} />
